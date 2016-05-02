@@ -1,25 +1,28 @@
 class TodoItem
   include Listable
-  attr_reader :description, :due, :priority
+  attr_accessor :progress
+  attr_reader :description, :due, :priority, :bar
 
   def initialize(description, options={})
+    validatePriority options[:priority]
     @description = description
-    @due = options[:due] ? Date.parse(options[:due]) : options[:due]
+    @due = options[:due] ? Chronic.parse(options[:due]) : options[:due]
     @priority = options[:priority]
+    @bar = ProgressBar.new(100, :percentage)
+    @progress = options[:progress] || 0
   end
-  def format_date
-    @due ? @due.strftime("%D") : "No due date"
+  def progress=(progress)
+    @progress = progress
+    @bar.increment! @progress
   end
-  def format_priority
-    value = " ⇧" if @priority == "high"
-    value = " ⇨" if @priority == "medium"
-    value = " ⇩" if @priority == "low"
-    value = "" if !@priority
-    return value
+  def validatePriority(priority)
+    valid_priorities = ["high", "medium", "low", nil]
+    raise UdaciListErrors::InvalidPriorityTypeError, "Priority must be one of #{valid_priorities}" unless valid_priorities.include? priority
   end
   def details
-    format_description(@description) + "due: " +
-    format_date +
-    format_priority
+    format_description(@description) + format_type(self.class) +
+    format_progress(@bar) +
+    "due: " + format_date(@due) +
+    format_priority(@priority)
   end
 end
