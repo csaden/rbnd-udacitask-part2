@@ -47,3 +47,10 @@ new_list.all
 # DEMO FILTER BY ITEM TYPE
 # ------------------------
 new_list.filter("event")
+
+# Set Progress for a Todo Item
+new_list.items[0].progress = 100
+new_list.items[2].progress = 50
+
+# See Progress Updated in Output
+new_list.all
