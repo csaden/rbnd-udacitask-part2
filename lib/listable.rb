@@ -1,3 +1,5 @@
 module Listable
-  # Listable methods go here
+  def format_description(text)
+    "#{text}".ljust(30)
+  end
 end
