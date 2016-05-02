@@ -1,7 +1,7 @@
 class TodoItem
   include Listable
-  attr_accessor :progress
-  attr_reader :description, :due, :priority, :bar
+  attr_accessor :progress, :priority
+  attr_reader :description, :due, :bar
 
   def initialize(description, options={})
     validatePriority options[:priority]
