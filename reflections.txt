@@ -1,13 +1,25 @@
 # What you added to Udacitask 2.0
 # -------------------------------------------------------
 1. What is the gem of your choice and how did you use it?
+
 2. Describe the 2 features you added to the project.
-  a) Feature 1...
-  b) Feature 2...
+  a) Feature 1: set the progress of a ToDo item
+  b) Feature 2: show the visual display of an item's progress in the output
 
 # REFLECTIONS
 # -------------------------------------------------------
 1. How long did you spend working on this project?
+I spent about 2 hours working on the project.
+
 2. What was the most rewarding challenge you conquered?
+I have a better understanding of requiring files when building a ruby application.
+I also have a better understanding of separating concerns with modules, classes, and mixins.
+
 3. What two additional features did you build? Why?
+I added the abilitiy to set the progress of a feature.
+I also added the progress percent to display in the console.
+
 4. Where do you still have room to grow?
+I need practice working with ruby gems. It'd be great to learn about gems that
+would be helpful for developing web applications, like rails. I'd also like to
+learn more about testing in Ruby, and I'd like to learn how to work with FactoryGirl.
