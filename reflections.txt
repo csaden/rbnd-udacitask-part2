@@ -18,6 +18,8 @@ I also have a better understanding of separating concerns with modules, classes,
 3. What two additional features did you build? Why?
 I added the abilitiy to set the progress of a feature.
 I also added the progress percent to display in the console.
+I used the progress_bar ruby gem to implement the feature of showing progress
+percentage completed for a todo item.
 
 4. Where do you still have room to grow?
 I need practice working with ruby gems. It'd be great to learn about gems that
