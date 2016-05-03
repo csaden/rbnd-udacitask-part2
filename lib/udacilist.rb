@@ -7,10 +7,12 @@ class UdaciList
   end
   def add(type, description, options={})
     type = type.downcase
-    raise UdaciListErrors::InvalidItemTypeError, "Item type #{type} is not supported" unless ["todo", "event", "link"].include? type
-    @items.push TodoItem.new(description, options) if type == "todo"
-    @items.push EventItem.new(description, options) if type == "event"
-    @items.push LinkItem.new(description, options) if type == "link"
+    allowed_types = {todo: TodoItem, event: EventItem, link: LinkItem}
+    if allowed_types.keys.include? type.to_sym
+      @items.push allowed_types[type.to_sym].new description, options
+    else
+      raise UdaciListErrors::InvalidItemTypeError, "#{type} does not exist."
+    end
   end
   def delete(index)
     raise UdaciListErrors::IndexExceedsListSizeError, "Failed to remove item at #{index}. Index out of bounds." unless index > 0 and index < @items.size
